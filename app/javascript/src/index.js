@@ -14,3 +14,13 @@ indexTasks(function (response) {
 
   $("#tasks").html(htmlString);
 });
+
+$("#new_task").on("submit", function (e) {
+  e.preventDefault();
+
+  var content = $("#task_content").val();
+
+  postTask(content, function (response) {
+    console.log(response);
+  });
+});
