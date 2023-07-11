@@ -3,16 +3,16 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1 class="text-center mt-4">To Do List</h1>
-      <div class="row" id="tasks"></div>
+      <h1 class="text-center mt-4" id="title">To Do List</h1>      
       <form class="form-inline" id="new-task">
-        <input class="form-control" id="task-content" type="text" placeholder="What do we have to do?" required/>
-        <button class="btn btn-primary">Create</button>
+        <input class="form-control col-10" id="task-content" type="text" placeholder="What do we have to do?" required/>
+        <button class="btn btn-primary col-2">Add Task</button>
       </form>
-      <div class="row form-inline">
-        <button class="btn btn-info" id="sort-all">All</button>
-        <button class="btn btn-info" id="sort-active">Active</button>
-        <button class="btn btn-info" id="sort-completed">Completed</button>
+      <div class="row" id="tasks"></div>
+      <div class="row button-row">
+        <button class="btn btn-info col" id="sort-all">All</button>
+        <button class="btn btn-info col" id="sort-active">Active</button>
+        <button class="btn btn-info col" id="sort-completed">Completed</button>
       </div>
     </div>
   </div>

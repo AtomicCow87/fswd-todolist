@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
       return "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
         " + task.content + "</div> \
         <input type='checkbox' class='mark-complete col-2' data-id='" + task.id + "'" + (task.completed ? 'checked' : '') + "> \
-        <button class='delete btn btn-danger col-4' data-id='" + task.id + "'>Delete \
+        <button class='delete btn col-4' data-id='" + task.id + "'>Delete \
         </button>";
     });
 
@@ -32,7 +32,7 @@ window.addEventListener("load", () => {
       var htmlString = "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + response.task.id + "'> \
         " + response.task.content + "</div> \
         <input type='checkbox' class='mark-complete col-2' data-id='" + response.task.id + "'" + (response.task.completed ? 'checked' : '') + "> \
-        <button class='delete btn btn-danger col-4' data-id='" + response.task.id + "'>Delete \
+        <button class='delete btn col-4' data-id='" + response.task.id + "'>Delete \
         </button>";
 
       $("#tasks").append(htmlString);
@@ -70,7 +70,7 @@ window.addEventListener("load", () => {
         return "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
           " + task.content + "</div> \
           <input type='checkbox' class='mark-complete col-2' data-id='" + task.id + "'" + (task.completed ? 'checked' : '') + "> \
-          <button class='delete btn btn-danger col-4' data-id='" + task.id + "'>Delete \
+          <button class='delete btn col-4' data-id='" + task.id + "'>Delete \
           </button>";
       });
 
@@ -85,7 +85,7 @@ window.addEventListener("load", () => {
           return "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
             " + task.content + "</div> \
             <input type='checkbox' class='mark-complete col-2' data-id='" + task.id + "'" + (task.completed ? 'checked' : '') + "> \
-            <button class='delete btn btn-danger col-4' data-id='" + task.id + "'>Delete \
+            <button class='delete btn col-4' data-id='" + task.id + "'>Delete \
             </button>";
         }
       });
@@ -101,7 +101,7 @@ window.addEventListener("load", () => {
           return "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
             " + task.content + "</div> \
             <input type='checkbox' class='mark-complete col-2' data-id='" + task.id + "'" + (task.completed ? 'checked' : '') + "> \
-            <button class='delete btn btn-danger col-4' data-id='" + task.id + "'>Delete \
+            <button class='delete btn col-4' data-id='" + task.id + "'>Delete \
             </button>";
         }
       });
