@@ -63,4 +63,50 @@ window.addEventListener("load", () => {
       });
     }
   });
+
+  $(document).on("click", "#sort-all", function () {
+    indexTasks(function (response) {
+      var htmlString = response.tasks.map(function(task) {
+        return "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
+          " + task.content + "</div> \
+          <input type='checkbox' class='mark-complete col-2' data-id='" + task.id + "'" + (task.completed ? 'checked' : '') + "> \
+          <button class='delete btn btn-danger col-4' data-id='" + task.id + "'>Delete \
+          </button>";
+      });
+
+      $("#tasks").html(htmlString);
+    });
+  });
+
+  $(document).on("click", "#sort-active", function () {
+    indexTasks(function (response) {
+      var htmlString = response.tasks.map(function(task) {
+        if (!task.completed) {
+          return "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
+            " + task.content + "</div> \
+            <input type='checkbox' class='mark-complete col-2' data-id='" + task.id + "'" + (task.completed ? 'checked' : '') + "> \
+            <button class='delete btn btn-danger col-4' data-id='" + task.id + "'>Delete \
+            </button>";
+        }
+      });
+
+      $("#tasks").html(htmlString);
+    });
+  });
+
+  $(document).on("click", "#sort-completed", function () {
+    indexTasks(function (response) {
+      var htmlString = response.tasks.map(function(task) {
+        if (task.completed) {
+          return "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
+            " + task.content + "</div> \
+            <input type='checkbox' class='mark-complete col-2' data-id='" + task.id + "'" + (task.completed ? 'checked' : '') + "> \
+            <button class='delete btn btn-danger col-4' data-id='" + task.id + "'>Delete \
+            </button>";
+        }
+      });
+
+      $("#tasks").html(htmlString);
+    });
+  });
 });
