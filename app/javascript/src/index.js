@@ -36,4 +36,12 @@ window.addEventListener("load", () => {
       $("#task-content").val("");
     });
   });
+
+  $("#tasks").on("click", ".delete", function () {
+    var id = $(this).data("id");
+
+    deleteTask(id, function (response) {
+      $(".task[data-id=" + response.task.id + "]").remove();
+    });
+  });
 });
