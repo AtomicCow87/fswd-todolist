@@ -5,22 +5,35 @@ import {
   postTask,
 } from "./requests.js";
 
-indexTasks(function (response) {
-  var htmlString = response.tasks.map(function(task) {
-    return "<div class='col-12 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
-      " + task.content + "\
-      </div>";
+window.addEventListener("load", () => {
+  console.log("page is fully loaded");
+
+  indexTasks(function (response) {
+    var htmlString = response.tasks.map(function(task) {
+      return "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
+        " + task.content + "</div> \
+        <input type='checkbox' class='mark-complete col-2' data-id='" + task.id + "'" + (task.completed ? 'checked' : '') + "> \
+        <button class='delete btn btn-danger col-4' data-id='" + task.id + "'>Delete \
+        </button>";
+    });
+
+    $("#tasks").html(htmlString);
   });
 
-  $("#tasks").html(htmlString);
-});
+  $("#new-task").on("submit", function (e) {
+    e.preventDefault();
 
-$("#new-task").on("submit", function (e) {
-  e.preventDefault();
+    var content = $("#task-content").val();
 
-  var content = $("#task-content").val();
+    postTask(content, function (response) {
+      var htmlString = "<div class='col-6 mb-3 p-2 border rounded task' data-id='" + response.task.id + "'> \
+        " + response.task.content + "</div> \
+        <input type='checkbox' class='mark-complete col-2' data-id='" + response.task.id + "'" + (response.task.completed ? 'checked' : '') + "> \
+        <button class='delete btn btn-danger col-4' data-id='" + response.task.id + "'>Delete \
+        </button>";
 
-  postTask(content, function (response) {
-    console.log(response);
+      $("#tasks").append(htmlString);
+      $("#task-content").val("");
+    });
   });
 });
