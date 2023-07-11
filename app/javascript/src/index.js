@@ -4,6 +4,8 @@ import {
   indexTasks,
   postTask,
   deleteTask,
+  markComplete,
+  markActive,
 } from "./requests.js";
 
 window.addEventListener("load", () => {
@@ -46,5 +48,19 @@ window.addEventListener("load", () => {
       $(".mark-complete[data-id=" + id + "]").remove();
       $(".delete[data-id=" + id + "]").remove();
     });
+  });
+
+  $(document).on("click", ".mark-complete", function () {
+    var id = $(this).data("id");
+
+    if ($(this).is(":checked")) {
+      markComplete(id, function (response) {
+        $(".task[data-id=" + id + "]").addClass("completed");
+      });
+    } else {
+      markActive(id, function (response) {
+        $(".task[data-id=" + id + "]").removeClass("completed");
+      });
+    }
   });
 });
