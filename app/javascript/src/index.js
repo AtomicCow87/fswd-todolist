@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $, { post } from 'jquery';
 
 import {
   indexTasks,
@@ -15,10 +15,10 @@ indexTasks(function (response) {
   $("#tasks").html(htmlString);
 });
 
-$("#new_task").on("submit", function (e) {
+$("#new-task").on("submit", function (e) {
   e.preventDefault();
 
-  var content = $("#task_content").val();
+  var content = $("#task-content").val();
 
   postTask(content, function (response) {
     console.log(response);
