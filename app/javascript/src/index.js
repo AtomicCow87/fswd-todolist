@@ -3,6 +3,7 @@ import $, { post } from 'jquery';
 import {
   indexTasks,
   postTask,
+  deleteTask,
 } from "./requests.js";
 
 window.addEventListener("load", () => {
@@ -37,11 +38,13 @@ window.addEventListener("load", () => {
     });
   });
 
-  $("#tasks").on("click", ".delete", function () {
+  $(document).on("click", ".delete", function () {
     var id = $(this).data("id");
 
     deleteTask(id, function (response) {
-      $(".task[data-id=" + response.task.id + "]").remove();
+      $(".task[data-id=" + id + "]").remove();
+      $(".mark-complete[data-id=" + id + "]").remove();
+      $(".delete[data-id=" + id + "]").remove();
     });
   });
 });
